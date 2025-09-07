@@ -1,0 +1,47 @@
+# Nom lisible du workflow. S’affiche dans l’onglet Actions de GitHub.
+name: STM32 Build
+
+# Définit les déclencheurs.
+on:
+  # Lance le workflow à chaque push sur la branche master.
+  push:
+    branches: [ "master" ]
+  # Lance le workflow pour chaque PR visant master.
+  pull_request:
+    branches: [ "master" ]
+
+# Début de la liste des jobs.
+jobs:
+  # Identifiant du job (libre, ici “build”).
+  build:
+    # Le job s’exécute sur un runner GitHub hébergé basé sur la dernière image Ubuntu disponible.
+    runs-on: ubuntu-latest
+
+    # Début de la séquence d’étapes du job. Exécutées dans l’ordre.
+    steps:
+      # 1. Récupération du repo
+      - name: Checkout repository # Étape nommée "Checkout repository".
+        uses: actions/checkout@v3 # Action officielle qui clone le dépôt dans le workspace du runner ($GITHUB_WORKSPACE).
+
+      # 2. Installer la toolchain ARM GCC
+      - name: Install ARM GCC Toolchain                           # Étape nommée Install ARM GCC Toolchain.
+        run: |                                                    # Exécute un script shell. Le | indique un bloc multi-ligne
+          sudo apt-get update                                     # met à jour l’index des paquets.
+          sudo apt-get install -y gcc-arm-none-eabi make          # installe le cross-compilateur ARM (arm-none-eabi-gcc et outils associés),
+                                                                  # make (pour construire via Makefile),
+                                                                  # cmake (utile si le projet l’emploie).
+
+      # 3. Compiler le projet avec make (ou CubeIDE en mode headless si tu veux)
+      - name: Build project             # Étape nommée Build project.
+        run: |                          # Exécute un script shell. 
+          cd Debug                      # Se place dans le dossier qui contient le Makefile.
+          make clean
+          make all                      # Lance la compilation via le Makefile (cible par défaut).
+
+      # 4. Récupérer le .elf ou .bin en artefact CI
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: stm32-build
+          path: Debug/*.elf
+
