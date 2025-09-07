@@ -1,0 +1,11 @@
+# CubeIDE metadata
+.metadata/
+.settings/
+*.launch
+
+# Build outputs
+Debug/
+Release/
+*.o
+*.elf
+*.bin
