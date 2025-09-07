@@ -38,10 +38,10 @@
 
 int main(void)
 {
-    // 1. Activer horloge GPIOC
+    // 1. Activer horloge GPIOA
     RCC_AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
 
-    // 2. Configurer PC13 en sortie
+    // 2. Configurer PA5 en sortie
     GPIOA_MODER &= ~(0x3 << (5 * 2)); 	// clear mode
     GPIOA_MODER |=  (0x1 << (5 * 2)); 	// output mode
 

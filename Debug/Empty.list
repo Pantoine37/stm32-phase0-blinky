@@ -88,7 +88,7 @@ int main(void)
  80001d4:	b480      	push	{r7}
  80001d6:	b083      	sub	sp, #12
  80001d8:	af00      	add	r7, sp, #0
-    // 1. Activer horloge GPIOC
+    // 1. Activer horloge GPIOA
     RCC_AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
  80001da:	4b19      	ldr	r3, [pc, #100]	@ (8000240 <main+0x6c>)
  80001dc:	681b      	ldr	r3, [r3, #0]
@@ -96,7 +96,7 @@ int main(void)
  80001e0:	f043 0301 	orr.w	r3, r3, #1
  80001e4:	6013      	str	r3, [r2, #0]
 
-    // 2. Configurer PC13 en sortie
+    // 2. Configurer PA5 en sortie
     GPIOA_MODER &= ~(0x3 << (5 * 2)); 	// clear mode
  80001e6:	4b17      	ldr	r3, [pc, #92]	@ (8000244 <main+0x70>)
  80001e8:	681b      	ldr	r3, [r3, #0]
