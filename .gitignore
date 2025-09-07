@@ -4,8 +4,9 @@
 *.launch
 
 # Build outputs
-Debug/
 Release/
 *.o
 *.elf
 *.bin
+
+.DS_Store
