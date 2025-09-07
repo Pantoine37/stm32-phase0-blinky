@@ -17,7 +17,7 @@
  */
 
 #include <stdint.h>
-#include "stm32f401xe.h"
+//#include "stm32f401xe.h"
 
 #define PERIPH_BASE       0x40000000UL
 #define AHB1PERIPH_BASE   (PERIPH_BASE + 0x00020000UL)
@@ -30,11 +30,11 @@
 
 // Registres RCC (entrées/sorties)
 #define RCC_AHB1ENR       *((volatile uint32_t*)(RCC_BASE + 0x30))
-//#define RCC_AHB1ENR_GPIOCEN (1 << 2)  // Bit pour activer GPIOC
+#define RCC_AHB1ENR_GPIOAEN (1 << 0)  // Bit pour activer GPIOC
 
 
 
-#define DELAY_COUNT 200000
+#define DELAY_COUNT 500000
 
 int main(void)
 {
