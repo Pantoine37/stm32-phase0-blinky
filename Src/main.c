@@ -34,7 +34,7 @@
 
 
 
-#define DELAY_COUNT 1000000
+#define DELAY_COUNT 200000
 
 int main(void)
 {

@@ -39,9 +39,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_line   0000059b  00000000  00000000  0000f094  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0004f0cc  00000000  00000000  0000f62f  2**0
+ 18 .debug_str    0004f0cb  00000000  00000000  0000f62f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  0005e6fb  2**0
+ 19 .comment      00000043  00000000  00000000  0005e6fa  2**0
                   CONTENTS, READONLY
  20 .debug_frame  00000058  00000000  00000000  0005e740  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -81,7 +81,7 @@ Disassembly of section .text:
 080001d4 <main>:
 
 
-#define DELAY_COUNT 1000000
+#define DELAY_COUNT 200000
 
 int main(void)
 {
@@ -155,7 +155,7 @@ int main(void)
  8000240:	40023830 	.word	0x40023830
  8000244:	40020000 	.word	0x40020000
  8000248:	40020014 	.word	0x40020014
- 800024c:	000f423f 	.word	0x000f423f
+ 800024c:	00030d3f 	.word	0x00030d3f
 
 08000250 <Reset_Handler>:
 
